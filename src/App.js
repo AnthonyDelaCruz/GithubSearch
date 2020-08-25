@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import HomeScreen from "screens/Home";
+
+import Navbar from "components/Navbar";
+import Wrapper from "components/Wrapper";
+import UserInfo from "components/BoxInfo";
+
+import ErrorScreen from "screens/Error";
+import { GithubUsersProvider, GithubUsersContext } from "./context";
+
+import "bootstrap/dist/css/bootstrap.css";
+
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      <Router>
+        {/* <Navbar /> */}
+        <Switch>
+          <Route path="/" exact component={HomeScreen} />
+          <Route path="/about" component={About} />
+          <Route path="*" component={ErrorScreen} />
+        </Switch>
+      </Router>
+    </Wrapper>
   );
 }
 
+const About = () => (
+  <div>
+    <h1>ABOUT</h1>{" "}
+  </div>
+);
+const Sample = () => (
+  <div>
+    <h1>SAMPLE</h1>
+  </div>
+);
 export default App;
