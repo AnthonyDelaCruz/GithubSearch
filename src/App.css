@@ -14,3 +14,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+img {
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}

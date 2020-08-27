@@ -3,11 +3,12 @@ import { GithubUsersContext } from "context";
 
 import BoxInfo from "components/BoxInfo";
 import CardInfo from "components/CardInfo";
+import UserInfo from "components/UserInfo";
+import Followers from "components/Followers";
 
 export default function Home() {
-  const { user } = useContext(GithubUsersContext);
+  const { user, followers: followers_arr } = useContext(GithubUsersContext);
   const { public_repos, followers, following, public_gists } = user;
-
   return (
     <section className="container">
       <div className="row py-md-5">
@@ -17,14 +18,14 @@ export default function Home() {
         <BoxInfo iconName="following" count={following} label="Following" />
       </div>
       <div className="row">
-        <div className="col-sm-12 col-md-6 card-info">
-          <CardInfo cardTitle={user.name}>
-            <h2>CHILD UI HERE</h2>
+        <div className="col-12 col-md-6 card-info">
+          <CardInfo cardTitle="User">
+            <UserInfo {...user} />
           </CardInfo>
         </div>
-        <div className="col-sm-12 col-md-6 card-info">
+        <div className="col-12 col-md-6 card-info">
           <CardInfo cardTitle="Followers">
-            <h2>CHILD UI HERE</h2>
+            <Followers followers={followers_arr} />
           </CardInfo>
         </div>
       </div>

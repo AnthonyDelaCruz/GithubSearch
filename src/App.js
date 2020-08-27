@@ -18,7 +18,7 @@ function App() {
   return (
     <Wrapper>
       <Router>
-        {/* <Navbar /> */}
+        <Navbar />
         <Switch>
           <Route path="/" exact component={HomeScreen} />
           <Route path="/about" component={About} />
