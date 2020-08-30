@@ -20,9 +20,9 @@ const itemIcons = {
 
 const Infobox = styled.div`
   border-radius: 10px;
+  flex: 1;
   max-width: 23%;
   display: flex;
-  justify-content: space-around;
   align-items: center;
   padding: 0.9375rem 0;
   background-color: #ffffff;
@@ -40,7 +40,7 @@ const Infobox = styled.div`
     font-weight: bold;
   }
 
-  @media only screen and (max-width: ${breakpoints.mobileS}) {
+  @media only screen and (max-width: ${breakpoints.tablet}) {
     max-width: unset;
     border-radius: 0;
   }
@@ -48,9 +48,11 @@ const Infobox = styled.div`
 
 export default function BoxInfo({ iconName, count, label }) {
   return (
-    <Infobox className="info-box col-md-3 col-sm-12">
-      <div>{itemIcons[iconName] || null}</div>
-      <div>
+    <Infobox className="info-box">
+      <div className="text-center" style={{ flex: 0.5 }}>
+        {itemIcons[iconName] || null}
+      </div>
+      <div style={{ flex: 1 }}>
         <h5>{label}</h5>
         <p>{count}</p>
       </div>

@@ -6,6 +6,7 @@ import {
   FaBuilding,
   FaCalendar,
 } from "react-icons/fa";
+import { breakpoints } from "../constants";
 
 const UserInfostyledDiv = styled.div`
   padding: 10px;
@@ -19,6 +20,12 @@ const UserInfostyledDiv = styled.div`
   }
   .user__info-icons {
     color: #cecece;
+  }
+  @media only screen and (max-width: ${breakpoints.tablet}) {
+    .avatar-container,
+    button {
+      width: 100%;
+    }
   }
 `;
 
@@ -34,8 +41,8 @@ export default function UserInfo({
 }) {
   return (
     <UserInfostyledDiv>
-      <div className="d-flex justify-content-between align-items-center">
-        <div className="d-flex">
+      <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div className="d-flex avatar-container">
           <img src={avatar_url} alt={name} />
           <div className="ml-3 d-flex flex-column justify-content-center">
             <h3 className="m-0">{name}</h3>
@@ -43,7 +50,7 @@ export default function UserInfo({
             {email && <span>{email}</span>}
           </div>
         </div>
-        <button className="btn btn-primary">Follow</button>
+        <button className="btn btn-primary mt-4 mt-md-0">Follow</button>
       </div>
       <div className="mt-3 py-3 user-bio">{bio}</div>
       <div>
@@ -52,7 +59,7 @@ export default function UserInfo({
           <span className="ml-2">{location}</span>
         </div>
         <div className="mb-2">
-          <FaLocationArrow className="user__info-icons" size={20} />{" "}
+          <FaBuilding className="user__info-icons" size={20} />{" "}
           <span className="ml-2">{company}</span>
         </div>
         <div className="mb-2">
@@ -60,10 +67,6 @@ export default function UserInfo({
           <span className="ml-2">
             <a href={blog}>{blog}</a>
           </span>
-        </div>
-        <div className="mb-2">
-          <FaBuilding className="user__info-icons" size={20} />{" "}
-          <span className="ml-2">{company}</span>
         </div>
         <div className="mb-2">
           <FaCalendar className="user__info-icons" size={20} />{" "}

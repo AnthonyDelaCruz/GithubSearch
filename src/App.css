@@ -9,7 +9,9 @@
   --header-font: "Archivo Black", sans-serif;
   --text-font: "Questrial", sans-serif;
 }
-
+.home-screen {
+  padding: 1rem;
+}
 .row {
   display: flex;
   justify-content: space-between;
@@ -20,7 +22,32 @@ img {
   object-fit: contain;
 }
 
+.cards-container,
+.boxes-container {
+  display: flex;
+  justify-content: space-between;
+}
+.card-info {
+  flex: 1;
+  max-width: 49%;
+}
+
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* make scrollbar transparent */
+}
+
+@media only screen and (max-width: 768px) {
+  .cards-container,
+  .boxes-container {
+    flex-direction: column;
+  }
+  .box-info {
+    max-width: unset;
+    border: 1px solid black;
+  }
+  .card-info {
+    max-width: unset;
+    margin-top: 20px;
+  }
 }
