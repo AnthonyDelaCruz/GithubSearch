@@ -1,18 +1,21 @@
-import React, { useContext } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ReactFC from "react-fusioncharts";
+import FusionCharts from "fusioncharts";
+import Charts from "fusioncharts/fusioncharts.charts";
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
 import HomeScreen from "screens/Home";
 
 import Navbar from "components/Navbar";
 import Wrapper from "components/Wrapper";
-import UserInfo from "components/BoxInfo";
 
 import ErrorScreen from "screens/Error";
-import { GithubUsersProvider, GithubUsersContext } from "./context";
 
 import "bootstrap/dist/css/bootstrap.css";
-
 import "./App.css";
+
+ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
 
 function App() {
   return (
@@ -21,7 +24,6 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/" exact component={HomeScreen} />
-          <Route path="/about" component={About} />
           <Route path="*" component={ErrorScreen} />
         </Switch>
       </Router>
@@ -29,14 +31,4 @@ function App() {
   );
 }
 
-const About = () => (
-  <div>
-    <h1>ABOUT</h1>{" "}
-  </div>
-);
-const Sample = () => (
-  <div>
-    <h1>SAMPLE</h1>
-  </div>
-);
 export default App;

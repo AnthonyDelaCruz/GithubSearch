@@ -21,6 +21,17 @@ const UserInfostyledDiv = styled.div`
   .user__info-icons {
     color: #cecece;
   }
+  .hireable-status {
+    padding: 6px;
+    border-radius: 5px;
+    color: #ffffff;
+  }
+  .hireable-status--true {
+    background-color: #00c400;
+  }
+  .hireable-status--false {
+    background-color: #ff4d4d;
+  }
   @media only screen and (max-width: ${breakpoints.tablet}) {
     .avatar-container,
     button {
@@ -28,7 +39,7 @@ const UserInfostyledDiv = styled.div`
     }
   }
 `;
-
+let emptyVal = "N/A";
 export default function UserInfo({
   name,
   avatar_url,
@@ -38,6 +49,7 @@ export default function UserInfo({
   blog,
   bio,
   created_at,
+  hireable,
 }) {
   return (
     <UserInfostyledDiv>
@@ -55,17 +67,26 @@ export default function UserInfo({
       <div className="mt-3 py-3 user-bio">{bio}</div>
       <div>
         <div className="mb-2">
+          <span
+            className={`hireable-status hireable-status--${
+              hireable ? "true" : "false"
+            }`}
+          >
+            {hireable ? "Hireable" : "Not hireable"}
+          </span>
+        </div>
+        <div className="mb-2">
           <FaLocationArrow className="user__info-icons" size={20} />{" "}
-          <span className="ml-2">{location}</span>
+          <span className="ml-2">{location || emptyVal}</span>
         </div>
         <div className="mb-2">
           <FaBuilding className="user__info-icons" size={20} />{" "}
-          <span className="ml-2">{company}</span>
+          <span className="ml-2">{company || emptyVal}</span>
         </div>
         <div className="mb-2">
           <FaLink className="user__info-icons" size={20} />
           <span className="ml-2">
-            <a href={blog}>{blog}</a>
+            <a href={blog}>{blog || emptyVal}</a>
           </span>
         </div>
         <div className="mb-2">
