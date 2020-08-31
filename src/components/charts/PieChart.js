@@ -5,7 +5,8 @@ import { chartConfigs } from "./helpers";
 
 const PieChart = ({ chartData }) => {
   const chartConfig = {
-    caption: "Top 5 Languages",
+    caption: "Languages",
+    subCaption: "top 5",
     decimals: 0,
   };
   return <ReactFC {...chartConfigs("pie2d", chartData, chartConfig)} />;

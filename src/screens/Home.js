@@ -6,15 +6,22 @@ import CardInfo from "components/CardInfo";
 import UserInfo from "components/UserInfo";
 import Followers from "components/Followers";
 import PieChart from "components/charts/PieChart";
+import DonutChart from "components/charts/DonutChart";
+import ColumnChart from "components/charts/ColumnChart";
+import BarChart from "components/charts/BarChart";
 
-import { transformChartData } from "utils";
+import {
+  transformChartDataRepos,
+  transformChartDataStars,
+  transformChartDataPopularRepos,
+  transformChartDataMostForked,
+} from "utils";
 
 export default function Home() {
   const { user, followers: followers_arr, repos } = useContext(
     GithubUsersContext
   );
   const { public_repos, followers, following, public_gists } = user;
-  console.log("publick repos", user);
   return (
     <section className="home-screen container">
       <div className="boxes-container py-4">
@@ -36,7 +43,18 @@ export default function Home() {
         </div>
       </div>
       <div className="charts-container py-4">
-        <PieChart chartData={transformChartData(repos)} />
+        <div className="charts-grid">
+          <div className="mb-4 mb-md-0">
+            <PieChart chartData={transformChartDataRepos(repos)} />
+          </div>
+          <ColumnChart chartData={transformChartDataPopularRepos(repos)} />
+        </div>
+        <div className="charts-grid my-4">
+          <div className="mb-4 mb-md-0">
+            <DonutChart chartData={transformChartDataStars(repos)} />
+          </div>
+          <BarChart chartData={transformChartDataMostForked(repos)} />
+        </div>
       </div>
     </section>
   );

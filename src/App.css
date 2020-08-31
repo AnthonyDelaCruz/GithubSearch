@@ -31,6 +31,11 @@ img {
   flex: 1;
   max-width: 49%;
 }
+.charts-container .charts-grid {
+  display: grid;
+  grid-template-columns: calc(40% - 0.75rem) calc(60% - 0.75rem);
+  grid-gap: 1.5rem;
+}
 
 ::-webkit-scrollbar {
   width: 0px;
@@ -49,5 +54,9 @@ img {
   .card-info {
     max-width: unset;
     margin-top: 20px;
+  }
+  .charts-container .charts-grid {
+    grid-template-columns: auto;
+    grid-gap: unset;
   }
 }
