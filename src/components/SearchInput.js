@@ -52,6 +52,8 @@ const StyledInput = styled.div`
     padding: 0.5rem 1rem;
     font-size: 1rem;
     border-radius: 8px;
+    background-color: var(--blue-gray);
+    border-color: #ffffff;
     &:focus {
       border-color: #ffffff;
       outline: none;

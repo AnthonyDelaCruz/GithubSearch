@@ -10,7 +10,6 @@ import { breakpoints } from "../constants";
 
 const UserInfostyledDiv = styled.div`
   padding: 10px;
-
   img {
     height: 80px;
     width: 80px;
@@ -31,6 +30,10 @@ const UserInfostyledDiv = styled.div`
   }
   .hireable-status--false {
     background-color: #ff4d4d;
+  }
+  button {
+    background-color: var(--blue-gray);
+    border-color: #ffffff;
   }
   @media only screen and (max-width: ${breakpoints.tablet}) {
     .avatar-container,

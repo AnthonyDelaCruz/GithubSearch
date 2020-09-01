@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import {
-  FaBeer,
   FaFolderOpen,
   FaUsers,
   FaUserFriends,
@@ -19,13 +18,11 @@ const itemIcons = {
 };
 
 const Infobox = styled.div`
-  border-radius: 10px;
   display: flex;
   align-items: center;
   padding: 0.9375rem 0;
   background-color: #ffffff;
   color: #9bc2cf;
-  border: 1.5px solid #c1e1ec;
   h5 {
     color: #334045;
   }
