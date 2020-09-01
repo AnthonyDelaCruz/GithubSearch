@@ -20,8 +20,6 @@ const itemIcons = {
 
 const Infobox = styled.div`
   border-radius: 10px;
-  flex: 1;
-  max-width: 23%;
   display: flex;
   align-items: center;
   padding: 0.9375rem 0;

@@ -5,14 +5,14 @@ import { breakpoints } from "../constants";
 const StyledCardInfo = styled.div`
   background-color: #ffffff;
   color: #334045;
+  height: 390px;
   max-height: 390px;
-  flex: 1;
   @media only screen and (max-width: ${breakpoints.tablet}) {
-    overflow: auto;
+    height: 500px;
     max-height: 500px;
   }
 `;
-export default function CardInfo({ cardTitle, children }) {
+export default function CardInfo({ cardTitle, children, scrollable }) {
   return (
     <div className="card-container h-100 d-flex flex-column">
       <h5
