@@ -8,21 +8,27 @@ import { hydrate, render } from "react-dom";
 
 const rootElement = document.getElementById("root");
 
-if (rootElement.hasChildNodes()) {
-  hydrate(
-    <GithubUsersProvider>
-      <App />
-    </GithubUsersProvider>,
-    rootElement
-  );
-} else {
-  render(
-    <GithubUsersProvider>
-      <App />
-    </GithubUsersProvider>,
-    rootElement
-  );
-}
+// if (rootElement.hasChildNodes()) {
+//   hydrate(
+//     <GithubUsersProvider>
+//       <App />
+//     </GithubUsersProvider>,
+//     rootElement
+//   );
+// } else {
+//   render(
+//     <GithubUsersProvider>
+//       <App />
+//     </GithubUsersProvider>,
+//     rootElement
+//   );
+// }
+ReactDom.render(
+  <GithubUsersProvider>
+    <App />
+  </GithubUsersProvider>,
+  rootElement
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
