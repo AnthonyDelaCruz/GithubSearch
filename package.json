@@ -43,5 +43,11 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.11.1"
+  },
+  "reactSnapshot": {
+    "exclude": [
+      "/home"
+    ],
+    "snapshotDelay": 300
   }
 }

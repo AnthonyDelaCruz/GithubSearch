@@ -10,6 +10,7 @@ import HomeScreen from "screens/Home";
 import Navbar from "components/Navbar";
 import Wrapper from "components/Wrapper";
 
+import LoginScreen from "screens/Login";
 import ErrorScreen from "screens/Error";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -23,7 +24,8 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/" exact component={HomeScreen} />
+          <Route path="/" exact component={LoginScreen} />
+          <Route path="/home" exact component={HomeScreen} />
           <Route path="*" component={ErrorScreen} />
         </Switch>
       </Router>

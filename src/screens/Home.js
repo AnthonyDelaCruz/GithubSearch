@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GithubUsersContext } from "context";
+import { useHistory } from "react-router-dom";
 
 import BoxInfo from "components/BoxInfo";
 import CardInfo from "components/CardInfo";
@@ -19,10 +20,19 @@ import {
 } from "utils";
 
 export default function Home() {
-  const { user, followers: followers_arr, repos } = useContext(
+  const { user, followers: followers_arr, repos, isLoggedIn } = useContext(
     GithubUsersContext
   );
+  const history = useHistory();
   const { public_repos, followers, following, public_gists } = user;
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      history.push("/");
+    }
+  }, []);
+
+  if (!isLoggedIn) return null;
   return (
     <section className="home-screen container">
       <SearchComponent />
