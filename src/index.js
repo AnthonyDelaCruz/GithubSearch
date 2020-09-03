@@ -4,8 +4,9 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { GithubUsersProvider } from "./context";
+import { render } from "react-snapshot";
 
-ReactDOM.render(
+render(
   <React.StrictMode>
     <GithubUsersProvider>
       <App />
