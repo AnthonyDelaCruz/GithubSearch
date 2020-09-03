@@ -23,7 +23,7 @@ const rootElement = document.getElementById("root");
 //     rootElement
 //   );
 // }
-ReactDom.render(
+ReactDOM.render(
   <GithubUsersProvider>
     <App />
   </GithubUsersProvider>,
