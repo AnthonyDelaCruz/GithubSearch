@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { GithubUsersProvider } from "./context";
+import { GithubUsersProvider, AuthContextProvider } from "./context";
 import { hydrate, render } from "react-dom";
 
 const rootElement = document.getElementById("root");
@@ -24,9 +24,11 @@ const rootElement = document.getElementById("root");
 //   );
 // }
 ReactDOM.render(
-  <GithubUsersProvider>
-    <App />
-  </GithubUsersProvider>,
+  <AuthContextProvider>
+    <GithubUsersProvider>
+      <App />
+    </GithubUsersProvider>
+  </AuthContextProvider>,
   rootElement
 );
 

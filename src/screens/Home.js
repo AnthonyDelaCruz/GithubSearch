@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { GithubUsersContext } from "context";
+import { GithubUsersContext, AuthContext } from "context";
 import { useHistory } from "react-router-dom";
 
 import BoxInfo from "components/BoxInfo";
@@ -20,9 +20,10 @@ import {
 } from "utils";
 
 export default function Home() {
-  const { user, followers: followers_arr, repos, isLoggedIn } = useContext(
+  const { user, followers: followers_arr, repos } = useContext(
     GithubUsersContext
   );
+  const { isLoggedIn } = useContext(AuthContext);
   const history = useHistory();
   const { public_repos, followers, following, public_gists } = user;
 

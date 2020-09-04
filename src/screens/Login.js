@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import { localStorageActions, GithubUsersContext } from "../context";
+import { localStorageActions, AuthContext } from "../context";
 
 export default function Login() {
-  const { isLoggedIn, setIsLoggedIn } = useContext(GithubUsersContext);
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const history = useHistory();
   const handleLogin = () => {
     localStorageActions("isLoggedIn", "set", "true");

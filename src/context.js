@@ -4,6 +4,7 @@ import followersMockData from "mockdata/mockFollowers";
 import reposMockData from "mockdata/mockRepos";
 
 const GithubUsersContext = React.createContext();
+const AuthContext = React.createContext();
 
 export const localStorageActions = (key, type = "get", val = null) => {
   if (type === "get") {
@@ -21,9 +22,6 @@ const GithubUsersProvider = ({ children }) => {
   const [user, setUser] = useState(userMockData);
   const [followers, setFollowers] = useState(followersMockData);
   const [repos, setRepos] = useState(reposMockData);
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorageActions("isLoggedIn")
-  );
 
   return (
     <GithubUsersContext.Provider
@@ -31,8 +29,6 @@ const GithubUsersProvider = ({ children }) => {
         user,
         followers,
         repos,
-        isLoggedIn,
-        setIsLoggedIn,
       }}
     >
       {children}
@@ -40,4 +36,20 @@ const GithubUsersProvider = ({ children }) => {
   );
 };
 
-export { GithubUsersContext, GithubUsersProvider };
+const AuthContextProvider = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorageActions("isLoggedIn")
+  );
+  return (
+    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export {
+  GithubUsersContext,
+  GithubUsersProvider,
+  AuthContext,
+  AuthContextProvider,
+};

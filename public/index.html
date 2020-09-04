@@ -29,10 +29,39 @@
       rel="stylesheet"
     />
     <title>GitUserSearch.</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background-color: #e8f4f8;
+      }
+      #root {
+        min-height: 100vh;
+        border: 2px solid green;
+      }
+      .loading-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        font-family: "Archivo Black", sans-serif;
+      }
+      .loading-div h1 {
+        margin: 0;
+      }
+      .loading-div p {
+        font-family: "Questrial", sans-serif;
+      }
+    </style>
   </head>
   <body>
-    <!-- <noscript>You need to enable JavaScript to run this app.</noscript> -->
-    <div id="root"></div>
+    <div id="root">
+      <div class="loading-div">
+        <h1>Loading the app...</h1>
+        <p>Please wait</p>
+      </div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

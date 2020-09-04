@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { breakpoints } from "../constants";
-import { GithubUsersContext, localStorageActions } from "../context";
+import { AuthContext, localStorageActions } from "../context";
 
 const Nav = styled.div`
   background-color: #9bc2cf;
@@ -30,7 +30,7 @@ const Nav = styled.div`
 `;
 
 export default function Navbar() {
-  const { isLoggedIn, setIsLoggedIn } = useContext(GithubUsersContext);
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const history = useHistory();
   const handleLogout = () => {
     localStorageActions("isLoggedIn", "remove");
