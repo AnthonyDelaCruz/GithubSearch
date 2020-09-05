@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import userMockData from "mockdata";
 import followersMockData from "mockdata/mockFollowers";
 import reposMockData from "mockdata/mockRepos";
+import { checkRateLimit } from "./utils";
 
 const GithubUsersContext = React.createContext();
 const AuthContext = React.createContext();
@@ -22,6 +23,21 @@ const GithubUsersProvider = ({ children }) => {
   const [user, setUser] = useState(userMockData);
   const [followers, setFollowers] = useState(followersMockData);
   const [repos, setRepos] = useState(reposMockData);
+  const [rateLimit, setRateLimit] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  // Check rate limit whenever page loads
+  useEffect(() => {
+    checkRateLimit().then((data) => {
+      if (data.error || data === 0) {
+        setRateLimit(0);
+        setError(data.error || "You have exceeded your request limit");
+      } else {
+        setRateLimit(data);
+      }
+    });
+  }, []);
 
   return (
     <GithubUsersContext.Provider
@@ -29,6 +45,8 @@ const GithubUsersProvider = ({ children }) => {
         user,
         followers,
         repos,
+        rateLimit,
+        error,
       }}
     >
       {children}

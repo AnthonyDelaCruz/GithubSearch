@@ -5,11 +5,12 @@ import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
-import HomeScreen from "screens/Home";
+import { GithubUsersProvider } from "./context";
 
 import Navbar from "components/Navbar";
 import Wrapper from "components/Wrapper";
 
+import HomeScreen from "screens/Home";
 import LoginScreen from "screens/Login";
 import ErrorScreen from "screens/Error";
 
@@ -25,7 +26,11 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/" exact component={LoginScreen} />
-          <Route path="/home" exact component={HomeScreen} />
+          <Route path="/home" exact>
+            <GithubUsersProvider>
+              <HomeScreen />
+            </GithubUsersProvider>
+          </Route>
           <Route path="*" component={ErrorScreen} />
         </Switch>
       </Router>

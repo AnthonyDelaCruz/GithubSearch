@@ -30,7 +30,7 @@ export default function Followers({ followers }) {
   return (
     <FollowersWrapper className="w-100">
       {followers.map(({ avatar_url, login, html_url }) => (
-        <Follower className="followers__info d-flex py-3">
+        <Follower key={avatar_url} className="followers__info d-flex py-3">
           <img src={avatar_url} alt={login} />
           <div className="follower__name-email ml-md-3">
             <h5>{login}</h5>

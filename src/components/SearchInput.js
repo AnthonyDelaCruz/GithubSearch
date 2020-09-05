@@ -66,15 +66,18 @@ const StyledDiv = styled.div`
   justify-content: center;
   align-content: center;
 `;
-export default function SearchInput() {
+
+export default function SearchInput({ rateLimit, error }) {
   const [query, setQuery] = useState("");
   const onChange = (e) => setQuery(e.target.value);
   const onSubmit = (e) => {
     e.preventDefault();
     console.log("User to be searched...", query);
   };
+
   return (
     <SearchInputContainer className="py-md-4">
+      <p>{error}</p>
       <StyledForm onSubmit={onSubmit}>
         <StyledInput>
           <div className="input-container">
@@ -83,16 +86,18 @@ export default function SearchInput() {
               className="form-control"
               value={query}
               onChange={onChange}
-              placeHolder="Github username"
+              placeholder="Github username"
             />
           </div>
-          <button type="submit" className="btn btn-primary">
-            Search
-          </button>
+          {!!rateLimit && (
+            <button type="submit" className="btn btn-primary">
+              Search
+            </button>
+          )}
         </StyledInput>
       </StyledForm>
       <StyledDiv className="py-2 py-md-0">
-        <h3 className="m-0">LIMIT 60 / 60</h3>
+        <h3 className="m-0">LIMIT {rateLimit} / 60</h3>
       </StyledDiv>
     </SearchInputContainer>
   );

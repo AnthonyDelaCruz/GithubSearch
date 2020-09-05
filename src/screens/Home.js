@@ -20,9 +20,13 @@ import {
 } from "utils";
 
 export default function Home() {
-  const { user, followers: followers_arr, repos } = useContext(
-    GithubUsersContext
-  );
+  const {
+    user,
+    followers: followers_arr,
+    repos,
+    rateLimit,
+    error,
+  } = useContext(GithubUsersContext);
   const { isLoggedIn } = useContext(AuthContext);
   const history = useHistory();
   const { public_repos, followers, following, public_gists } = user;
@@ -36,7 +40,7 @@ export default function Home() {
   if (!isLoggedIn) return null;
   return (
     <section className="home-screen container">
-      <SearchComponent />
+      <SearchComponent rateLimit={rateLimit} error={error} />
       <div className="boxes-container mb-4">
         <BoxInfo iconName="repos" count={public_repos} label="Public Repos" />
         <BoxInfo iconName="gists" count={public_gists} label="Public Gists" />

@@ -1,3 +1,4 @@
+import axios from "axios";
 export const transformChartDataRepos = (arr) => {
   let keys = arr.map((i) => i.language).filter((i) => !!i);
   let keyTally = keys.reduce((a, b) => {
@@ -60,4 +61,14 @@ export const transformChartDataMostForked = (arr) => {
     .map((i) => ({ label: i, value: forkedRepos[i] }))
     .sort((a, b) => b.value - a.value)
     .slice(0, 5);
+};
+
+export const checkRateLimit = async () => {
+  try {
+    const req = await axios.get(`${process.env.REACT_APP_ROOT_URL}/rate_limit`);
+    const remainingLimit = req.data.rate.remaining;
+    return remainingLimit;
+  } catch (error) {
+    return { error: "Error occured." };
+  }
 };
