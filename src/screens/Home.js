@@ -26,6 +26,8 @@ export default function Home() {
     repos,
     rateLimit,
     error,
+    handleSearchUser,
+    loading,
   } = useContext(GithubUsersContext);
   const { isLoggedIn } = useContext(AuthContext);
   const history = useHistory();
@@ -40,17 +42,41 @@ export default function Home() {
   if (!isLoggedIn) return null;
   return (
     <section className="home-screen container">
-      <SearchComponent rateLimit={rateLimit} error={error} />
+      <SearchComponent
+        handleSearchUser={handleSearchUser}
+        rateLimit={rateLimit}
+        error={error}
+      />
       <div className="boxes-container mb-4">
-        <BoxInfo iconName="repos" count={public_repos} label="Public Repos" />
-        <BoxInfo iconName="gists" count={public_gists} label="Public Gists" />
-        <BoxInfo iconName="followers" count={followers} label="Followers" />
-        <BoxInfo iconName="following" count={following} label="Following" />
+        <BoxInfo
+          iconName="repos"
+          loading={loading}
+          count={public_repos}
+          label="Public Repos"
+        />
+        <BoxInfo
+          iconName="gists"
+          loading={loading}
+          count={public_gists}
+          label="Public Gists"
+        />
+        <BoxInfo
+          iconName="followers"
+          loading={loading}
+          count={followers}
+          label="Followers"
+        />
+        <BoxInfo
+          iconName="following"
+          loading={loading}
+          count={following}
+          label="Following"
+        />
       </div>
       <div className="cards-container mb-4">
         <div className="card-info">
           <CardInfo cardTitle="User">
-            <UserInfo {...user} />
+            <UserInfo {...user} loading={loading} />
           </CardInfo>
         </div>
         <div className="card-info">

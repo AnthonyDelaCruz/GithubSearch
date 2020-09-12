@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export const transformChartDataRepos = (arr) => {
   let keys = arr.map((i) => i.language).filter((i) => !!i);
   let keyTally = keys.reduce((a, b) => {
@@ -70,5 +71,37 @@ export const checkRateLimit = async () => {
     return remainingLimit;
   } catch (error) {
     return { error: "Error occured." };
+  }
+};
+
+export const searchUser = async (user) => {
+  try {
+    const req = await axios.get(
+      `${process.env.REACT_APP_ROOT_URL}/users/${user.toLowerCase()}`
+    );
+    return req.data;
+  } catch (error) {
+    return { error: `User with this username "${user}" does not exist.` };
+  }
+};
+
+export const searchUserFollowers = async (user) => {
+  try {
+    const req = await axios.get(
+      `${process.env.REACT_APP_ROOT_URL}/users/${user}/followers`
+    );
+    return req.data;
+  } catch (error) {
+    return { error: `Error occured while fetching followers.` };
+  }
+};
+export const searchUserRepos = async (user) => {
+  try {
+    const req = await axios.get(
+      `${process.env.REACT_APP_ROOT_URL}/users/${user}/repos`
+    );
+    return req.data;
+  } catch (error) {
+    return { error: `Error occured while fetching repos.` };
   }
 };

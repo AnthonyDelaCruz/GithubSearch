@@ -22,34 +22,31 @@ const Infobox = styled.div`
   align-items: center;
   padding: 0.9375rem 0;
   background-color: #ffffff;
-  color: #9bc2cf;
-  h5 {
-    color: #334045;
-  }
+
   p,
   span {
     margin: 0;
     font-size: 1.5rem;
+    color: ${(props) => (props.isLoading ? "transparent" : "#9bc2cf")};
   }
   span {
     font-weight: bold;
   }
-
   @media only screen and (max-width: ${breakpoints.tablet}) {
     max-width: unset;
     border-radius: 0;
   }
 `;
 
-export default function BoxInfo({ iconName, count, label }) {
+export default function BoxInfo({ iconName, count, label, loading }) {
   return (
-    <Infobox className="info-box">
+    <Infobox isLoading={loading} className="info-box">
       <div className="text-center" style={{ flex: 0.5 }}>
-        {itemIcons[iconName] || null}
+        {itemIcons[iconName]}
       </div>
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, paddingRight: 10 }}>
         <h5>{label}</h5>
-        <p>{count}</p>
+        <p className={`${loading && "animate"}`}>{count}</p>
       </div>
     </Infobox>
   );

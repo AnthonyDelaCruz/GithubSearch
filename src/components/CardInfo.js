@@ -5,8 +5,10 @@ import { breakpoints } from "../constants";
 const StyledCardInfo = styled.div`
   background-color: #ffffff;
   color: #334045;
-  height: 390px;
-  max-height: 390px;
+  // height: 390px;
+  flex: 1;
+  max-height: 450px;
+  overflow: auto;
   @media only screen and (max-width: ${breakpoints.tablet}) {
     height: 500px;
     max-height: 500px;

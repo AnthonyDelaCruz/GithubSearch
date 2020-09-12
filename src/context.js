@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import userMockData from "mockdata";
 import followersMockData from "mockdata/mockFollowers";
 import reposMockData from "mockdata/mockRepos";
-import { checkRateLimit } from "./utils";
+import {
+  checkRateLimit,
+  searchUser,
+  searchUserFollowers,
+  searchUserRepos,
+} from "./utils";
+import { FaTumblrSquare } from "react-icons/fa";
 
 const GithubUsersContext = React.createContext();
 const AuthContext = React.createContext();
@@ -24,8 +30,34 @@ const GithubUsersProvider = ({ children }) => {
   const [followers, setFollowers] = useState(followersMockData);
   const [repos, setRepos] = useState(reposMockData);
   const [rateLimit, setRateLimit] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const handleSearchUser = async (username) => {
+    setError("");
+    setLoading(true);
+    const userObj = await searchUser(username);
+
+    if (userObj.error) {
+      setError(userObj.error);
+      setLoading(false);
+    } else {
+      setUser(userObj);
+
+      Promise.all([
+        searchUserFollowers(userObj.login),
+        searchUserRepos(userObj.login),
+      ]).then(([followers, repos]) => {
+        if (!followers.error) {
+          setFollowers(followers);
+        }
+        if (!repos.error) {
+          setRepos(repos);
+        }
+        setLoading(false);
+      });
+    }
+  };
 
   // Check rate limit whenever page loads
   useEffect(() => {
@@ -37,7 +69,7 @@ const GithubUsersProvider = ({ children }) => {
         setRateLimit(data);
       }
     });
-  }, []);
+  }, [handleSearchUser]);
 
   return (
     <GithubUsersContext.Provider
@@ -47,6 +79,8 @@ const GithubUsersProvider = ({ children }) => {
         repos,
         rateLimit,
         error,
+        handleSearchUser,
+        loading,
       }}
     >
       {children}

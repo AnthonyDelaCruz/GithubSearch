@@ -29,15 +29,21 @@ const Follower = styled.div`
 export default function Followers({ followers }) {
   return (
     <FollowersWrapper className="w-100">
-      {followers.map(({ avatar_url, login, html_url }) => (
-        <Follower key={avatar_url} className="followers__info d-flex py-3">
-          <img src={avatar_url} alt={login} />
-          <div className="follower__name-email ml-md-3">
-            <h5>{login}</h5>
-            <p className="text-muted">{html_url}</p>
-          </div>
-        </Follower>
-      ))}
+      {followers.length ? (
+        followers.map(({ avatar_url, login, html_url }) => (
+          <Follower key={avatar_url} className="followers__info d-flex py-3">
+            <img src={avatar_url} alt={login} />
+            <div className="follower__name-email ml-md-3">
+              <h5>{login}</h5>
+              <p className="text-muted">{html_url}</p>
+            </div>
+          </Follower>
+        ))
+      ) : (
+        <div className="h-100 d-flex justify-content-center align-items-center">
+          <h4>User has no followers.</h4>
+        </div>
+      )}
     </FollowersWrapper>
   );
 }
