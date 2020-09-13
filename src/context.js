@@ -8,22 +8,9 @@ import {
   searchUserFollowers,
   searchUserRepos,
 } from "./utils";
-import { FaTumblrSquare } from "react-icons/fa";
 
 const GithubUsersContext = React.createContext();
-const AuthContext = React.createContext();
 
-export const localStorageActions = (key, type = "get", val = null) => {
-  if (type === "get") {
-    return window.localStorage.getItem(key);
-  }
-  if (type === "set") {
-    window.localStorage.setItem(key, val);
-  }
-  if (type === "remove") {
-    window.localStorage.removeItem(key);
-  }
-};
 const GithubUsersProvider = ({ children }) => {
   // this is where all the business logic will to to de couple it from the presentational components
   const [user, setUser] = useState(userMockData);
@@ -88,20 +75,4 @@ const GithubUsersProvider = ({ children }) => {
   );
 };
 
-const AuthContextProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorageActions("isLoggedIn")
-  );
-  return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
-export {
-  GithubUsersContext,
-  GithubUsersProvider,
-  AuthContext,
-  AuthContextProvider,
-};
+export { GithubUsersContext, GithubUsersProvider };

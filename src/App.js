@@ -9,6 +9,7 @@ import { GithubUsersProvider } from "./context";
 
 import Navbar from "components/Navbar";
 import Wrapper from "components/Wrapper";
+import PrivateRoute from "components/PrivateRoute";
 
 import HomeScreen from "screens/Home";
 import LoginScreen from "screens/Login";
@@ -26,11 +27,11 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/" exact component={LoginScreen} />
-          <Route path="/home" exact>
+          <PrivateRoute path="/home" exact>
             <GithubUsersProvider>
               <HomeScreen />
             </GithubUsersProvider>
-          </Route>
+          </PrivateRoute>
           <Route path="*" component={ErrorScreen} />
         </Switch>
       </Router>

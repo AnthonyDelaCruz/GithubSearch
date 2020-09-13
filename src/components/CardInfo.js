@@ -5,7 +5,6 @@ import { breakpoints } from "../constants";
 const StyledCardInfo = styled.div`
   background-color: #ffffff;
   color: #334045;
-  // height: 390px;
   flex: 1;
   max-height: 450px;
   overflow: auto;

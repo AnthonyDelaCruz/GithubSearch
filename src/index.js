@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { AuthContextProvider } from "./context";
 import { hydrate, render } from "react-dom";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 const rootElement = document.getElementById("root");
 
@@ -24,9 +24,13 @@ const rootElement = document.getElementById("root");
 //   );
 // }
 ReactDOM.render(
-  <AuthContextProvider>
+  <Auth0Provider
+    clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
+    domain={process.env.REACT_APP_AUTH0_DOMAIN}
+    redirectUri="http://localhost:3000/home"
+  >
     <App />
-  </AuthContextProvider>,
+  </Auth0Provider>,
   rootElement
 );
 
