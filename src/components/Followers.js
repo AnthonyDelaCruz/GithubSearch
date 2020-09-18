@@ -1,4 +1,5 @@
 import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 import { breakpoints } from "../constants";
 
@@ -15,6 +16,13 @@ const Follower = styled.div`
   p {
     margin: 0;
   }
+  h5 {
+    color: ${(props) => (props.isLoading ? "transparent" : "#000000")};
+  }
+  p {
+    margin-top: ${(props) => props.isLoading && "5px"};
+    color: ${(props) => (props.isLoading ? "transparent" : "#6c757d")};
+  }
   border-bottom: 1px solid #cdcdcd;
   @media only screen and (max-width: ${breakpoints.tablet}) {
     justify-content: space-evenly;
@@ -26,16 +34,27 @@ const Follower = styled.div`
     }
   }
 `;
-export default function Followers({ followers }) {
+export default function Followers({ followers, loading }) {
   return (
     <FollowersWrapper className="w-100">
       {followers.length ? (
         followers.map(({ avatar_url, login, html_url }) => (
-          <Follower key={avatar_url} className="followers__info d-flex py-3">
-            <img src={avatar_url} alt={login} />
+          <Follower
+            isLoading={loading}
+            key={avatar_url}
+            className="followers__info d-flex py-3"
+          >
+            {!loading ? (
+              <img src={avatar_url} alt={login} />
+            ) : (
+              <div
+                className="animate"
+                style={{ height: 60, width: 60, borderRadius: "50%" }}
+              />
+            )}
             <div className="follower__name-email ml-md-3">
-              <h5>{login}</h5>
-              <p className="text-muted">{html_url}</p>
+              <h5 className={`${loading && "animate"}`}>{login}</h5>
+              <p className={`${loading && "animate"}`}>{html_url}</p>
             </div>
           </Follower>
         ))

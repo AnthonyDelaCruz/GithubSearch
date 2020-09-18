@@ -6,11 +6,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { breakpoints } from "../constants";
 
 const Nav = styled.div`
-  background-color: #9bc2cf;
+  background-color: #24292e;
   display: flex;
   span,
-  h4 {
-    color: #334045;
+  h5 {
+    color: #fff;
     font-weight: bold;
   }
   .profile-image {
@@ -45,7 +45,7 @@ export default function Navbar() {
         <div className="d-none d-md-block"></div>
         <div className="d-flex align-items-center">
           <img src={user.picture} className="profile-image" />
-          <h4 className="ml-3 m-0">Hi, {user.name}!</h4>
+          <h5 className="ml-3 m-0">Hi, {user.name}!</h5>
         </div>
         <button className="btn" onClick={handleLogout}>
           <span>Logout</span>

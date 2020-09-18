@@ -71,7 +71,7 @@ export default function Home() {
         </div>
         <div className="card-info">
           <CardInfo cardTitle={`Followers (${followers_arr.length})`}>
-            <Followers followers={followers_arr} />
+            <Followers loading={loading} followers={followers_arr} />
           </CardInfo>
         </div>
       </div>

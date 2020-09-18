@@ -77,16 +77,17 @@ export default function UserInfo({
           </div>
           <div className="ml-3 d-flex flex-column justify-content-center">
             <h3 className={`m-0 text ${isAnimated}`}>{name}</h3>
-            <span className={`text ${isAnimated}`}>tony@gmail.com</span>
             {email && <span className={`text ${isAnimated}`}>{email}</span>}
           </div>
         </div>
         <button className="btn btn-primary mt-4 mt-md-0">Follow</button>
       </div>
-      <div className={`mt-3 py-3 user-bio text ${isAnimated}`}>{bio}</div>
+      {bio && (
+        <div className={`mt-3 py-3 user-bio text ${isAnimated}`}>{bio}</div>
+      )}
       <div>
         <div
-          className={`mb-2 ${isAnimated}`}
+          className={`my-2 ${isAnimated}`}
           style={{
             width: isAnimated && "20%",
           }}
