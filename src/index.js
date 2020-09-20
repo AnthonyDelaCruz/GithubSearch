@@ -27,7 +27,7 @@ ReactDOM.render(
   <Auth0Provider
     clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
     domain={process.env.REACT_APP_AUTH0_DOMAIN}
-    redirectUri="http://localhost:3000/home"
+    redirectUri="https://github-search-rosy.vercel.app/home"
   >
     <App />
   </Auth0Provider>,
