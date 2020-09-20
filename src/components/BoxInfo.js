@@ -27,7 +27,7 @@ const Infobox = styled.div`
   span {
     margin: 0;
     font-size: 1.5rem;
-    color: ${(props) => (props.isLoading ? "transparent" : "#9bc2cf")};
+    color: ${(props) => (props.isLoading ? "transparent" : "#000000")};
   }
   span {
     font-weight: bold;

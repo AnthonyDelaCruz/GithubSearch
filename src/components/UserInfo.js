@@ -7,6 +7,7 @@ import {
   FaCalendar,
 } from "react-icons/fa";
 import { breakpoints } from "../constants";
+import Button from "components/Button";
 
 const UserInfostyledDiv = styled.div`
   padding: 10px;
@@ -40,7 +41,6 @@ const UserInfostyledDiv = styled.div`
     background-color: #ff4d4d;
   }
   button {
-    background-color: var(--blue-gray);
     border-color: #ffffff;
   }
   @media only screen and (max-width: ${breakpoints.tablet}) {
@@ -80,7 +80,7 @@ export default function UserInfo({
             {email && <span className={`text ${isAnimated}`}>{email}</span>}
           </div>
         </div>
-        <button className="btn btn-primary mt-4 mt-md-0">Follow</button>
+        <Button className="mt-4 mt-md-0">Follow</Button>
       </div>
       {bio && (
         <div className={`mt-3 py-3 user-bio text ${isAnimated}`}>{bio}</div>

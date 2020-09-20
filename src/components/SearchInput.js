@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 
+import Button from "components/Button";
 import { breakpoints } from "../constants";
 
 const SearchInputContainer = styled.div`
@@ -50,15 +51,7 @@ const StyledInput = styled.div`
   }
   button {
     padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 8px;
-    background-color: var(--blue-gray);
-    border-color: #ffffff;
-    &:focus {
-      border-color: #ffffff;
-      outline: none;
-      box-shadow: none;
-    }
+    justify-self: end;
   }
 `;
 const StyledDiv = styled.div`
@@ -94,11 +87,7 @@ export default function SearchInput({ rateLimit, error, handleSearchUser }) {
                 placeholder="Github username"
               />
             </div>
-            {!!rateLimit && (
-              <button type="submit" className="btn btn-primary">
-                Search
-              </button>
-            )}
+            {!!rateLimit && <Button type="submit">Search</Button>}
           </StyledInput>
         </StyledForm>
         <StyledDiv className="py-2 py-md-0">

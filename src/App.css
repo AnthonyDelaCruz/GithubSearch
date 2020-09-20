@@ -1,9 +1,9 @@
 :root {
   --white: #ffffff;
   --blue-gray: #809bce;
-  --green: #b8e0d2;
+  --green: #2ea44f;
   --light-green: #d6eadf;
-  --light-black: #232528;
+  --light-black: #24292e;
   --light-blue: #e8f4f8;
   --main-blue: #86c5da;
   --header-font: "Archivo Black", sans-serif;
@@ -38,7 +38,21 @@ img {
   grid-template-columns: calc(40% - 0.75rem) calc(60% - 0.75rem);
   grid-gap: 1.5rem;
 }
-
+.login-screen {
+  background: rgb(36, 41, 46);
+  background: radial-gradient(
+    circle,
+    rgba(36, 41, 46, 1) 19%,
+    rgba(35, 35, 41, 0.958420868347339) 30%,
+    rgba(26, 26, 26, 1) 99%
+  );
+}
+.login-screen__login-container {
+  background-color: var(--light-black) !important;
+  background-color: "red";
+  border-radius: 5px;
+  box-shadow: 0px 5px 12px 7px #222020;
+}
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
