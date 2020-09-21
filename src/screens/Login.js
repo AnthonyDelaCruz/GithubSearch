@@ -5,14 +5,15 @@ import { FaGithub } from "react-icons/fa";
 import Button from "components/Button";
 
 export default function Login() {
-  const { loginWithRedirect, isAuthenticated, logout, isLoading } = useAuth0();
+  const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
   const history = useHistory();
 
   useEffect(() => {
     if (isAuthenticated && !isLoading) history.replace("/home");
   }, [isAuthenticated, isLoading]);
 
-  if (isAuthenticated) return null;
+  if (isAuthenticated || isLoading) return null;
+
   return (
     <div
       className="login-screen d-flex align-items-center justify-content-center"
@@ -23,6 +24,7 @@ export default function Login() {
         <h4 className="text-white font-weight-bold text-center my-3">
           Github User Search
         </h4>
+        <br />
         <div className="d-flex flex-column">
           <Button onClick={() => loginWithRedirect()}>Login</Button>
         </div>

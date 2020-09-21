@@ -9,7 +9,12 @@ export default function PrivateRoute({ children, path, ...rest }) {
     // this will redirect user to auth0 login screen if not yet authenticated
     // then redirect to original route after authentication
     const cb = async () =>
-      await loginWithRedirect({ redirectUri: `http://localhost:3000${path}` });
+      await loginWithRedirect({
+        redirectUri:
+          process.env.NODE_ENV === "development"
+            ? `http://localhost:3000${path}`
+            : `https://user-github-search.vercel.app${path}`,
+      });
     cb();
   }, [isAuthenticated, isLoading, path, loginWithRedirect]);
 
