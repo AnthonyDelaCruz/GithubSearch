@@ -12,7 +12,7 @@ export default function Login() {
     if (isAuthenticated && !isLoading) history.replace("/home");
   }, [isAuthenticated, isLoading]);
 
-  if (isAuthenticated || isLoading) return null;
+  if (isAuthenticated) return null;
   return (
     <div
       className="login-screen d-flex align-items-center justify-content-center"
@@ -20,12 +20,9 @@ export default function Login() {
     >
       <div className="login-screen__login-container px-3 d-flex flex-column align-items-center p-5">
         <FaGithub color="#fff" size={130} />
-        <div
-          style={{ fontSize: "1.4rem" }}
-          className="text-white font-weight-bold text-center my-3"
-        >
+        <h4 className="text-white font-weight-bold text-center my-3">
           Github User Search
-        </div>
+        </h4>
         <div className="d-flex flex-column">
           <Button onClick={() => loginWithRedirect()}>Login</Button>
         </div>

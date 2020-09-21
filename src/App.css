@@ -6,7 +6,7 @@
   --light-black: #24292e;
   --light-blue: #e8f4f8;
   --main-blue: #86c5da;
-  --header-font: "Archivo Black", sans-serif;
+  --header-font: "Righteous", cursive;
   --text-font: "Questrial", sans-serif;
 }
 .home-screen {
@@ -47,6 +47,7 @@ img {
     rgba(26, 26, 26, 1) 99%
   );
 }
+
 .login-screen__login-container {
   background-color: var(--light-black) !important;
   background-color: "red";

@@ -20,6 +20,12 @@ const Nav = styled.div`
     border-radius: 50%;
     object-fit: contain;
   }
+  button {
+    &:focus {
+      outline: none;
+      box-shadow: unset;
+    }
+  }
   @media only screen and (max-width: ${breakpoints.tablet}) {
     .profile-image {
       height: 40px;
