@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -39,7 +38,6 @@ const Nav = styled.div`
 
 export default function Navbar() {
   const { logout, isAuthenticated, user } = useAuth0();
-  const history = useHistory();
   const handleLogout = () => {
     logout();
   };
@@ -50,7 +48,11 @@ export default function Navbar() {
       <div className="d-flex align-items-center justify-content-between w-100">
         <div className="d-none d-md-block"></div>
         <div className="d-flex align-items-center">
-          <img src={user.picture} className="profile-image" />
+          <img
+            alt="profile-avatar"
+            src={user.picture}
+            className="profile-image"
+          />
           <span className="ml-3 m-0">Hi, {user.name}!</span>
         </div>
         <button className="btn" onClick={handleLogout}>

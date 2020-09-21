@@ -1,18 +1,10 @@
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FaGithub } from "react-icons/fa";
 import Button from "components/Button";
 
 export default function Login() {
-  const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
-  const history = useHistory();
-
-  useEffect(() => {
-    if (isAuthenticated && !isLoading) history.replace("/home");
-  }, [isAuthenticated, isLoading]);
-
-  if (isAuthenticated || isLoading) return null;
+  const { loginWithRedirect } = useAuth0();
 
   return (
     <div

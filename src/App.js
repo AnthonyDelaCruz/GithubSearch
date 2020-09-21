@@ -7,9 +7,9 @@ import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
 import { GithubUsersProvider } from "./context";
 
-import Navbar from "components/Navbar";
 import Wrapper from "components/Wrapper";
 import PrivateRoute from "components/PrivateRoute";
+import RouteWithAuthState from "components/RouteWithAuth";
 
 import HomeScreen from "screens/Home";
 import LoginScreen from "screens/Login";
@@ -24,9 +24,8 @@ function App() {
   return (
     <Wrapper>
       <Router>
-        <Navbar />
         <Switch>
-          <Route path="/" exact component={LoginScreen} />
+          <RouteWithAuthState path="/" exact component={LoginScreen} />
           <PrivateRoute path="/home" exact>
             <GithubUsersProvider>
               <HomeScreen />

@@ -17,7 +17,6 @@ export default function PrivateRoute({ children, path, ...rest }) {
       });
     cb();
   }, [isAuthenticated, isLoading, path, loginWithRedirect]);
-
   if (!isAuthenticated) return null;
   return (
     <Route path={path} {...rest}>
