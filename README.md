@@ -6,6 +6,7 @@
 - [Auth0](https://auth0.com/) - for social login authentication.
 - [React Router](https://reactrouter.com/) - for client side routing.
 - [Fusion Charts](https://www.fusioncharts.com/) - for data visualization.
+- [React Icons](https://react-icons.github.io/react-icons/) - for rendering Icons from [Font Awesome](https://fontawesome.com/).
 - [Vercel](https://vercel.com/) - for hosting and deploying the app.
 
 #### Images from App
