@@ -9,7 +9,7 @@
 - [React Icons](https://react-icons.github.io/react-icons/) - for rendering Icons from [Font Awesome](https://fontawesome.com/).
 - [Vercel](https://vercel.com/) - for hosting and deploying the app.
 
-### Link to live App 
+#### Link to live App 
 - <https://user-github-search.vercel.app>
 #### Images from App
 ![Login Screen](https://github.com/AnthonyDelaCruz/GithubSearch/blob/master/src/static/img1.png?raw=true)
